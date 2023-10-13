@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1>Observaciones</h1>
+<hr>
+<table class="table">
+    <tr>
+        <th>Titulo</th>
+        <th>Bioquimico</th>
+        <th>Fecha</th>
+        <th></th>
+    </tr>
+    {% for observacion in observaciones %}
+    <tr>
+        <td><a href="/obs/{{observacion.id}}">{{observacion.titulo}}</a></td>
+        <td>{{observacion.usuario}}</td>
+        <td>{{observacion.fecha}}</td>
+        <td><a href="/eli_obs/{{observacion.id}}" class="btn btn-danger justify-content-end">Eliminar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>{{repequipo.titulo}}</h1>
+<small>Enviado por {{repequipo.usuario}} el {{repequipo.fecha}}</small>
+<hr>
+<div>
+    {{repequipo.reporte | safe}}
+</div>
+{% endblock %}

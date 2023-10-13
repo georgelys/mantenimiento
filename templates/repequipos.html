@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1>Reportes de equipos</h1>
+<hr>
+<table class="table">
+    <tr>
+        <th>Titulo</th>
+        <th>Biomedico</th>
+        <th>Fecha</th>
+        <th></th>
+    </tr>
+    {% for repequipo in repequipos %}
+    <tr>
+        <td><a href="/repequipo/{{repequipo.id}}">{{repequipo.titulo}}</a></td>
+        <td>{{repequipo.usuario}}</td>
+        <td>{{repequipo.fecha}}</td>
+        <td><a href="/eli_repequipo/{{repequipo.id}}" class="btn btn-danger justify-content-end">Eliminar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

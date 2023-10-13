@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>{{observacion.titulo}}</h1>
+<small>Enviado por {{observacion.usuario}} el {{observacion.fecha}}</small>
+<hr>
+<div>
+    {{observacion.obs | safe}}
+</div>
+{% endblock %}

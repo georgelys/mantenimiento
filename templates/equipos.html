@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        <form method="post" class="my-3">
+            <div class="row">
+                <div class="col-auto">
+                    <input type="text" name="search" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <input type="submit" class="btn btn-secondary" value="Buscar">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col" style="text-align: right; margin-right: 5%;">
+        {% if equipos %}
+        <a href="/calendario" target="_blank" title="Calendario" class="btn btn-secondary my-3">
+            <i class="fa-solid fa-calendar-days"></i>
+        </a>
+        {% endif %}
+    </div>
+</div>
+<table class="table table-bordered table-hover table-responsive table-sm">
+    <tr>
+        <th>ID</th>
+        <th>Descripcion</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Serie</th>
+        <th>Codigo</th>
+        <th>Servicio</th>
+        <th>Ubicacion</th>
+        <th>Garantia</th>
+        <th>Fecha de compra</th>
+        <th>Origen</th>
+        <th>Inventario</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for equipo in equipos %}
+    <tr>
+        <td>{{equipo.id}}</td>
+        <td>{{equipo.description}}</td>
+        <td>{{equipo.brand}}</td>
+        <td>{{equipo.model}}</td>
+        <td>{{equipo.siries}}</td>
+        <td>{{equipo.codi}}</td>
+        <td>{{equipo.service}}</td>
+        <td>{{equipo.location}}</td>
+        <td>{{equipo.warranty}}</td>
+        <td>{{equipo.dati}}</td>
+        <td>{{equipo.origin}}</td>
+        <td>{{equipo.inventory}}</td>
+        <!-- <td>{{equipo.functiin}}</td>
+        <td>{{equipo.appli}}</td>
+        <td>{{equipo.requi}}</td>
+        <td>{{equipo.fault}}</td>
+        <td>{{equipo.ge}}</td>
+        <td>{{equipo.category}}</td>
+        <td>{{equipo.frequency}}</td> -->
+        <td>
+            <a href="/editar/{{equipo.id}}/" title="Editar" class="btn btn-secondary pull-right">
+                <i class="fa-solid fa-pen"></i>
+            </a>
+        </td>
+        <td>
+            <a href="fichaedit/{{equipo.id}}" title="Llenar ficha" class="btn btn-secondary pull-right">
+                <i class="fa-solid fa-file-invoice"></i>
+            </a>
+        </td>
+        <!-- <td>
+            <form action="{{url_for('index', id=equipo.id)}}" method="POST">
+                <input type="hidden" name="method" value="Imprimir">
+                <input type="submit" value="Imprimir" class="btn btn-secondary">
+            </form>
+        </td> -->
+        <td>
+            <a href="#" onclick="window.open('/imprimir/{{equipo.id}}/');
+            window.open('hoja/{{equipo.id}}/');" title="Imprimir" class="btn btn-secondary pull-right" target="">
+                <i class="fa-solid fa-print"></i>
+            </a>
+        </td>
+        <td>
+            <form action="{{url_for('delete_eq', id=equipo.id)}}" method="POST">
+                <button type="submit" title="Eliminar" class="btn btn-danger">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+                <!-- <input type="hidden" name="method" value="Delete">
+                <input type="submit" value="Delete" class="fa-solid fa-trash"> -->
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
